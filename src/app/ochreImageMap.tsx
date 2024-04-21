@@ -1,5 +1,3 @@
-//import OchreImageMapClient from './ochreImageMapClient.tsx';
-
 export default async function OchreImageMap(params: { uuid: string; }) {
   const { uuid } = params;
 
