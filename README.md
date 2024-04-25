@@ -8,17 +8,16 @@ the visibility of these clickable areas.
 
 ### Why SVG 1.1?
 
-Image maps using the HTML <map> tag are
+Image maps using the HTML &lt;map&gt; tag are
 [well-supported](https://caniuse.com/?search=map) in modern browsers.
 However, they have some limitations that are usually solved with 
-JavaScript plugins. They are not responsive to different viewport
-widths, and support for styling is limited. Embedding raster image
-data within an SVG offers these features by default.
+JavaScript plugins on modern sites. &lt;map&gt; tags are not responsive to different viewport
+widths, and support for styling is limited.
 
-However, SVG is not without problems. It has a reputation for being bugging,
-and currently [SVG 2](https://svgwg.org/) is currently an editor's draft-
-and has been for a long time. Because of that we use SVG 1.1 here, and
-be on the lookout for quirks in different browsers. 
+Embedding raster image data within an SVG offers these features by default.
+However, SVG is not without problems. It has a reputation for being buggy,
+and [SVG 2](https://svgwg.org/) is an editor's draft-
+and has been for a long time. Because of that we use SVG 1.1 here. 
 
 ### Tab navigation
 
