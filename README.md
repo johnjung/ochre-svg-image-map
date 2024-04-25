@@ -15,9 +15,6 @@ JavaScript plugins on modern sites. &lt;map&gt; tags are not responsive to diffe
 widths, and support for styling is limited.
 
 Embedding raster image data within an SVG offers these features by default.
-However, SVG is not without problems. It has a reputation for being buggy,
-and [SVG 2](https://svgwg.org/) is an editor's draft-
-and has been for a long time. Because of that we use SVG 1.1 here. 
 
 ### Tab navigation
 
