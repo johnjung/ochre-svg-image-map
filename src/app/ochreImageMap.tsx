@@ -37,7 +37,7 @@ export default async function OchreImageMap(params: { uuid: string }) {
     const key = `area-${index}`;
     if (published) {
       return (
-        <g key={key}><a href={href}>{ rect }</a></g>
+        <g key={key}><a href={href} target="_blank">{ rect }</a></g>
       );
     } else {
       return (
