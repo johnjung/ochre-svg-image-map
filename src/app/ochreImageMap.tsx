@@ -16,23 +16,34 @@ export default async function OchreImageMap(params: { uuid: string }) {
     const width = coords[2] - coords[0];
     const height = coords[3] - coords[1];
     const href = `https://ochre.lib.uchicago.edu/ochre?uuid=${area.uuid}`;
+    const publicationDate = area.publicationDate;
+    const currentDate = new Date().toJSON().slice(0, 10);
+    const published = publicationDate && (publicationDate <= currentDate);
+    const stroke = published ? "red" : "pink";
+    const rect = (
+      <rect
+        x={x}
+        y={y}
+        width={width}
+        height={height}
+        stroke={stroke}
+        strokeWidth="2px"
+        fill="transparent"
+        vectorEffect="non-scaling-stroke"
+      >
+        <title>{area.title}</title>
+      </rect>);
+
     const key = `area-${index}`;
-    return (
-      <a href={href} key={key}>
-        <rect
-          x={x}
-          y={y}
-          width={width}
-          height={height}
-          stroke="red"
-          strokeWidth="2px"
-          fill="transparent"
-          vectorEffect="non-scaling-stroke"
-        >
-          <title>{area.title}</title>
-        </rect>
-      </a>
-    );
+    if (published) {
+      return (
+        <g key={key}><a href={href}>{ rect }</a></g>
+      );
+    } else {
+      return (
+        <g key={key}>{ rect }</g>
+      );
+    }
   }
 
   return (
