@@ -9,7 +9,16 @@ export default async function OchreImageMap(params: { uuid: string }) {
 
   const href = `https://ochre.lib.uchicago.edu/ochre?uuid=${uuid}&load`;
 
-  function ClickableRect(area, index) {
+  interface Area {
+    shape: string;
+    title: string;
+    type: string;
+    publicationDate?: string;
+    uuid: string;
+    coords: string;
+  }
+
+  function ClickableRect(area: Area, index: number) {
     const coords = area.coords.split(",").map((c) => Number(c));
     const x = coords[0];
     const y = coords[1];
