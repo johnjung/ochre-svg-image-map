@@ -63,7 +63,7 @@ export default async function OchreImageMap(params: { uuid: string }) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <image href={href} />
-      {data.ochre.resource.imagemap.area.map((area, index) =>
+      {data.ochre.resource.imagemap.area.map((area: Area, index: number) =>
         ClickableRect(area, index),
       )}
     </svg>
