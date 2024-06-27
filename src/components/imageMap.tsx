@@ -1,5 +1,13 @@
+"use client";
+
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import LoadingSpinner from "./loading/spinner";
+
 export default async function ImageMap(params: { uuid: string }) {
   const { uuid } = params;
+
+  const [isLoading, setIsLoading] = useState(true);
 
   const response = await fetch(
     `https://ochre.lib.uchicago.edu/ochre?uuid=${uuid}&format=json`,
@@ -56,16 +64,34 @@ export default async function ImageMap(params: { uuid: string }) {
   }
 
   return (
-    <svg
-      version="1.1"
-      width="100%"
-      viewBox={`0 0 ${data.ochre.resource.imagemap.width} ${data.ochre.resource.imagemap.height}`}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <image href={href} />
-      {data.ochre.resource.imagemap.area.map((area: Area, index: number) =>
-        ClickableRect(area, index),
-      )}
-    </svg>
+    <>
+      {/*
+      <AnimatePresence>
+        {isLoading ?
+          <motion.div
+            key={`loading-spinner-${uuid}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
+            className="pointer-events-none z-10 col-start-1 col-end-2 row-start-1 row-end-2 grid select-none items-center justify-center"
+          >
+            <LoadingSpinner />
+          </motion.div>
+        : null}
+      </AnimatePresence>
+      */}
+      <svg
+        version="1.1"
+        width="100%"
+        viewBox={`0 0 ${data.ochre.resource.imagemap.width} ${data.ochre.resource.imagemap.height}`}
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <image href={href} onLoad={() => { console.log('here'); setIsLoading(false)}} />
+        {data.ochre.resource.imagemap.area.map((area: Area, index: number) =>
+          ClickableRect(area, index),
+        )}
+      </svg>
+    </>
   );
 }
