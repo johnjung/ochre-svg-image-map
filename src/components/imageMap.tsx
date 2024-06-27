@@ -1,4 +1,4 @@
-export default async function OchreImageMap(params: { uuid: string }) {
+export default async function ImageMap(params: { uuid: string }) {
   const { uuid } = params;
 
   const response = await fetch(
