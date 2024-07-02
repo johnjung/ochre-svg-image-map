@@ -10,6 +10,15 @@ export type OchreCreator = {
   content: string;
 };
 
+export type OchreArea = {
+  shape: string;
+  title: string;
+  type: string;
+  publicationDate: string;
+  uuid: string;
+  coords: string;
+};
+
 export type OchreString =
   | string
   | number
@@ -67,9 +76,10 @@ export type OchreLink = {
 export type OchreResource = {
   date: string;
   copyright: string;
-  image: {
-    publicationDateTime: string;
-    content: OchreString | Array<OchreString>;
+  imagemap: {
+    area: Array<OchreArea>;
+    width: number;
+    height: number;
   };
   project: {
     identification: {
@@ -328,7 +338,7 @@ export type OchreSetResponse = {
 
 export type OchreResourceResponse = {
   ochre: {
-    uuidBelongsTo: string;
+    uuidBelongsToooooo: string;
     metadata: OchreMetadata;
     languages: string;
     publicationDateTime: string;

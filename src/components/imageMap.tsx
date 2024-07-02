@@ -1,21 +1,13 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useImageMap } from "@/hooks/use-image-map";
 import LoadingSpinner from "./loading/spinner";
 
-export default async function ImageMap(params: { uuid: string }) {
-  const { uuid } = params;
+export default function ImageMap() {
+  //const { uuid } = params;
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  const response = await fetch(
-    `https://ochre.lib.uchicago.edu/ochre?uuid=${uuid}&format=json`,
-  );
-
-  const data = await response.json();
-
-  const href = `https://ochre.lib.uchicago.edu/ochre?uuid=${uuid}&load`;
+  const { isLoading, error } = useImageMap();
 
   interface Area {
     shape: string;
